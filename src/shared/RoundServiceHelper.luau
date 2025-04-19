@@ -1,6 +1,7 @@
 local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Teams = game:GetService("Teams")
-local RoundSettings = require(script.Parent.RoundSettings)
+local RoundSettings = require(ReplicatedStorage.Shared.Settings.RoundSettings)
 local RoundServiceHelper = {}
 --get player list
 local PlayerList = {}
@@ -53,7 +54,6 @@ function RoundServiceHelper:createTeam(teamName : string, color : BrickColor)
     newTeam.Name = teamName
     newTeam.Parent = Teams
 end
-
 
 function RoundServiceHelper:destroyTeam(teamName: string, fallbackTeam : string)
   local team = findTeamFromName(teamName)
