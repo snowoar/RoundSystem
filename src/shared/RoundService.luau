@@ -15,6 +15,9 @@ local RoundService = {}
 --hasEnoughPlayers
 --isGameInSession
 --
+function RoundService:StartIntermission()
+  task.wait(3)
+end
 
 function RoundService:StartGame()
   --checks
@@ -24,11 +27,20 @@ function RoundService:StartGame()
   end
 
   if not RoundServiceHelper:hasEnoughPlayers() then
+    print("not enough players to start game...")
     return 
   end
 
   RoundSettings.isGameInSession = true
+  RoundSettings.isGameEventsActive = true
 
+  print("game starting...")
+
+  --intermission
+  --
+  
+  RoundServiceHelper:createTeam("test", BrickColor.new("Really red"))  
+  RoundServiceHelper:assignAllRandomTeam()
 end
 
 function RoundService:EndGame()
@@ -38,5 +50,8 @@ end
 function RoundService:Init()
   print("Init!")
   RoundSettings.isGameInSession = false
+  RoundSettings.isGameEventsActive = false
+  RoundService:StartGame()
 end
+
 return RoundService
