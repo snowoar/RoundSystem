@@ -1,7 +1,8 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 --local Players = game:GetService("Players")
 
 local RoundServiceHelper = require(script.Parent.RoundServiceHelper)
-local RoundSettings = require(script.Parent.RoundSettings)
+local RoundSettings = require(ReplicatedStorage.Shared.Settings.RoundSettings)
 local RoundService = {}
 
 --how the game works
@@ -40,7 +41,8 @@ function RoundService:StartGame()
   --
   
   RoundServiceHelper:createTeam("test", BrickColor.new("Really red"))  
-  RoundServiceHelper:assignAllRandomTeam()
+  RoundServiceHelper:createTeam("test2", BrickColor.new("Really blue"))
+  RoundServiceHelper:assignAllRandomTeamEven()
 end
 
 function RoundService:EndGame()

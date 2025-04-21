@@ -6,7 +6,6 @@ local RoundServiceHelper = require(ReplicatedStorage.Shared.RoundServiceHelper)
 
 local function playerJoined(plr : Player)
     RoundServiceHelper:addPlayer(plr)
-    RoundService:StartGame()
 end
 
 local function playerLeaving(plr : Player)
